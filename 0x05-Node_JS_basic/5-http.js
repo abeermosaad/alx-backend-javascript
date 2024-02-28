@@ -18,7 +18,11 @@ function studentsHandeler(req, res) {
         cnt += 1;
       }
       res.end();
-    });
+    })
+    .catch(() =>{
+        res.end('This is the list of our students')
+
+    })
 }
 
 const port = 1245;
