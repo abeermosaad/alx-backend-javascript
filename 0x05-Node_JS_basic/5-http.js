@@ -10,19 +10,17 @@ function studentsHandeler(req, res) {
     .then(({ fields, NumberOfStudents }) => {
       res.write('This is the list of our students\n');
       res.write(`Number of students: ${NumberOfStudents}\n`);
-      let cnt = 0
+      let cnt = 0;
       for (const [field, students] of Object.entries(fields)) {
         res.write(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
-        if (cnt != Object.keys(fields).length - 1)
-            res.write(`\n`);
+        if (cnt !== Object.keys(fields).length - 1) res.write('\n');
         cnt += 1;
       }
       res.end();
     })
-    .catch(() =>{
-        res.end('This is the list of our students')
-
-    })
+    .catch(() => {
+      res.end('This is the list of our students');
+    });
 }
 
 const port = 1245;
