@@ -6,9 +6,9 @@ function homeHandeler(req, res) {
 }
 
 function studentsHandeler(req, res) {
+  res.write('This is the list of our students\n');
   countStudents(process.argv[2])
     .then(({ fields, NumberOfStudents }) => {
-      res.write('This is the list of our students\n');
       res.write(`Number of students: ${NumberOfStudents}\n`);
       let cnt = 0;
       for (const [field, students] of Object.entries(fields)) {
@@ -18,8 +18,9 @@ function studentsHandeler(req, res) {
       }
       res.end();
     })
-    .catch(() => {
-      res.end('This is the list of our students');
+    .catch((err) => {
+      res.write(err.message);
+      res.end();
     });
 }
 
