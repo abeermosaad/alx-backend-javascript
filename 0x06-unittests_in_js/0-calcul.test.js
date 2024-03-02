@@ -2,7 +2,7 @@
 const calculateNumber = require('./0-calcul.js');
 const assert = require('assert');
 
-describe('calculateNumber func', function(){
+describe('calculateNumber', function(){
     
     it('Positive Numbers: int and int', function(){
         const result = calculateNumber(1, 3);
